@@ -42,15 +42,14 @@ Project structure.
     ❯ tree -L 3 -a -I 'README.md|.DS_Store|.git|.gitignore|gambar-petunjuk|.terraform|*.hcl|*.tfstate|*.tfstate.backup' ./
         ├── main.tf
         ├── modules
-        │   ├── stage1
-        │   │   └── salam_hello.tf
-        │   └── stage2
-        │       └── ask.tf
-        ├── output.tf
+        │   └── world1
+        │       ├── main.tf
+        │       └── outputs.tf
+        ├── outputs.tf
         ├── provider.tf
         └── variables.tf
 
-        3 directories, 6 files
+        2 directories, 6 files
 </pre>
 
 
