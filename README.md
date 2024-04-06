@@ -52,6 +52,7 @@ Project structure.
         2 directories, 6 files
 </pre>
 
+&nbsp;
 
 **Reference :**<br />
 - Stack overflow | "Why is my Terraform output not working in module?".
