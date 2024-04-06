@@ -53,6 +53,9 @@ Project structure.
 </pre>
 
 
+**Reference :**<br />
+- Stack overflow | "Why is my Terraform output not working in module?".
+  <pre>https://stackoverflow.com/questions/52503528/why-is-my-terraform-output-not-working-in-module</pre>
 
 
 &nbsp;
