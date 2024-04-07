@@ -220,6 +220,11 @@ Output in root : <br/>
 
 Test the output :
 <pre>
+    ❯ jq --version
+
+        jq-1.6
+
+
     ❯ terraform output -json world_echo_word_say_hello_output_says
 
         "Hi, HELLO WORLD! from root variables.\nOutput from module world1."
