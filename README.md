@@ -187,6 +187,8 @@ Output in root : <br/>
         Success! The configuration is valid.
 </pre>
 
+&nbsp;
+
 <pre>
     ❯ terraform plan
 
@@ -212,6 +214,15 @@ Output in root : <br/>
             ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
             Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+</pre>
+
+&nbsp;
+
+Test the output :
+<pre>
+    ❯ terraform output -json world_echo_word_say_hello_output_says
+
+        "Hi, HELLO WORLD! from root variables.\nOutput from module world1."
 </pre>
 
 &nbsp;
