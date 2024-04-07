@@ -271,7 +271,9 @@ Output in root : <br/>
 
 &nbsp;
 
-Command: output : The terraform output command is used to extract the value of an output variable from the state file.
+Command:<br />
+output : The terraform output command is used to extract the value of an output variable from the state file.
+
 <pre>
     ❯ terraform output -json world_echo_word_say_hello_output_says
 
