@@ -128,17 +128,29 @@ Modules : <br/>
 &nbsp;
 
 <pre>
+    ❯ vim modules/world1/outputs.tf
+
+        output "echo_word_say_hello_output" {
+          value = "Hi, ${var.word_transition}\nOutput from module world1."
+        }
 </pre>
 
 &nbsp;
 
+Output in root : <br/>
+
 <pre>
+    ❯ vim outputs.tf
+
+
+        output "world_echo_word_say_hello_output_says" {
+          value = module.world_stage_1.echo_word_say_hello_output
+        }
 </pre>
 
 &nbsp;
 
-<pre>
-</pre>
+&nbsp;
 
 
 ### &#x1F530; TERRAFORM STAGES :
