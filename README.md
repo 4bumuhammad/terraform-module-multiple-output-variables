@@ -133,6 +133,10 @@ Modules : <br/>
         output "echo_word_say_hello_output" {
           value = "Hi, ${var.word_transition}\nOutput from module world1."
         }
+
+        output "world_module_says_again" {
+          value = "hi again from world module."
+        }
 </pre>
 
 &nbsp;
@@ -146,6 +150,10 @@ Output in root : <br/>
         output "world_echo_word_say_hello_output_says" {
           value = module.world_stage_1.echo_word_say_hello_output
         }
+
+        output "world_echo_word_say_hello_output_says_again" {
+          value = module.world_stage_1.world_module_says_again
+        }        
 </pre>
 
 &nbsp;
@@ -218,19 +226,99 @@ Output in root : <br/>
 
 &nbsp;
 
-Test the output :
 <pre>
-    ❯ jq --version
-
-        jq-1.6
+    ❯ terraform apply -auto-approve
 
 
-    ❯ terraform output -json world_echo_word_say_hello_output_says
 
-        "Hi, HELLO WORLD! from root variables.\nOutput from module world1."
+            module.world_stage_1.null_resource.echo_word_say_hello: Refreshing state... [id=211663204245414683]
+
+            Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+            -/+ destroy and then create replacement
+
+            Terraform will perform the following actions:
+
+            # module.world_stage_1.null_resource.echo_word_say_hello must be replaced
+            -/+ resource "null_resource" "echo_word_say_hello" {
+                ~ id       = "211663204245414683" -> (known after apply)
+                ~ triggers = { # forces replacement
+                    ~ "always_run" = "2024-04-07T04:52:55Z" -> (known after apply)
+                    }
+                }
+
+            Plan: 1 to add, 0 to change, 1 to destroy.
+
+            Changes to Outputs:
+            ~ world_echo_word_say_hello_output_says_again = "hi again from world module.." -> "hi again from world module."
+            module.world_stage_1.null_resource.echo_word_say_hello: Destroying... [id=211663204245414683]
+            module.world_stage_1.null_resource.echo_word_say_hello: Destruction complete after 0s
+            module.world_stage_1.null_resource.echo_word_say_hello: Creating...
+            module.world_stage_1.null_resource.echo_word_say_hello: Provisioning with 'local-exec'...
+            module.world_stage_1.null_resource.echo_word_say_hello (local-exec): Executing: ["/bin/sh" "-c" "echo 'HELLO WORLD! from root variables.'"]
+            module.world_stage_1.null_resource.echo_word_say_hello (local-exec): HELLO WORLD! from root variables.
+            module.world_stage_1.null_resource.echo_word_say_hello: Creation complete after 0s [id=7897654338057823302]
+
+            Apply complete! Resources: 1 added, 0 changed, 1 destroyed.
+
+            Outputs:
+
+            world_echo_word_say_hello_output_says = <<EOT
+            Hi, HELLO WORLD! from root variables.
+            Output from module world1.
+            EOT
+            world_echo_word_say_hello_output_says_again = "hi again from world module."
 </pre>
 
 &nbsp;
+
+Command: output : The terraform output command is used to extract the value of an output variable from the state file.
+<pre>
+    ❯ terraform output -json world_echo_word_say_hello_output_says
+
+        "Hi, HELLO WORLD! from root variables.\nOutput from module world1."
+
+
+
+    ❯ terraform output -json world_echo_word_say_hello_output_says_again
+
+        "hi again from world module."
+</pre>
+
+&nbsp;
+
+<pre>
+    ❯ terraform destroy -auto-approve
+
+
+
+            module.world_stage_1.null_resource.echo_word_say_hello: Refreshing state... [id=7897654338057823302]
+
+            Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+            - destroy
+
+            Terraform will perform the following actions:
+
+            # module.world_stage_1.null_resource.echo_word_say_hello will be destroyed
+            - resource "null_resource" "echo_word_say_hello" {
+                - id       = "7897654338057823302" -> null
+                - triggers = {
+                    - "always_run" = "2024-04-07T05:25:50Z"
+                    } -> null
+                }
+
+            Plan: 0 to add, 0 to change, 1 to destroy.
+
+            Changes to Outputs:
+            - world_echo_word_say_hello_output_says       = <<-EOT
+                    Hi, HELLO WORLD! from root variables.
+                    Output from module world1.
+                EOT -> null
+            - world_echo_word_say_hello_output_says_again = "hi again from world module." -> null
+            module.world_stage_1.null_resource.echo_word_say_hello: Destroying... [id=7897654338057823302]
+            module.world_stage_1.null_resource.echo_word_say_hello: Destruction complete after 0s
+
+            Destroy complete! Resources: 1 destroyed.
+</pre>
 
 &nbsp;
 
