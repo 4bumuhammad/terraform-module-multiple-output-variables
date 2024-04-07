@@ -63,6 +63,52 @@ Project structure.
 
 &nbsp;
 
+### Code : 
+
+<pre>
+    ❯ vim provider.tf
+
+
+        terraform {
+          required_providers {
+            null = {
+              source = "hashicorp/null"
+            }
+          }
+        }
+</pre>
+
+&nbsp;
+
+<pre>
+</pre>
+
+&nbsp;
+
+<pre>
+</pre>
+
+&nbsp;
+
+<pre>
+</pre>
+
+&nbsp;
+
+<pre>
+</pre>
+
+&nbsp;
+
+<pre>
+</pre>
+
+&nbsp;
+
+<pre>
+</pre>
+
+
 ### &#x1F530; TERRAFORM STAGES :
 
 
