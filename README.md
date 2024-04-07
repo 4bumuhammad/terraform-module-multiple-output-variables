@@ -262,7 +262,7 @@ Output in root : <br/>
 
             Outputs:
 
-            world_echo_word_say_hello_output_says = <<EOT
+            world_echo_word_say_hello_output_says = &lt;&lt;EOT
             Hi, HELLO WORLD! from root variables.
             Output from module world1.
             EOT
