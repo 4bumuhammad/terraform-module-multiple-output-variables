@@ -155,7 +155,64 @@ Output in root : <br/>
 
 ### &#x1F530; TERRAFORM STAGES :
 
+<pre>
+    ❯ terraform init
 
+
+
+            Initializing the backend...
+            Initializing modules...
+
+            Initializing provider plugins...
+            - Reusing previous version of hashicorp/null from the dependency lock file
+            - Using previously-installed hashicorp/null v3.2.2
+
+            Terraform has been successfully initialized!
+
+            You may now begin working with Terraform. Try running "terraform plan" to see
+            any changes that are required for your infrastructure. All Terraform commands
+            should now work.
+
+            If you ever set or change modules or backend configuration for Terraform,
+            rerun this command to reinitialize your working directory. If you forget, other
+            commands will detect it and remind you to do so if necessary.
+</pre>
+
+&nbsp;
+
+<pre>
+    ❯ terraform fmt
+    ❯ terraform validate
+
+        Success! The configuration is valid.
+</pre>
+
+<pre>
+    ❯ terraform plan
+
+
+
+            module.world_stage_1.null_resource.echo_word_say_hello: Refreshing state... [id=1224189821322960773]
+
+            Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+            -/+ destroy and then create replacement
+
+            Terraform will perform the following actions:
+ 
+            # module.world_stage_1.null_resource.echo_word_say_hello must be replaced
+            -/+ resource "null_resource" "echo_word_say_hello" {
+                ~ id       = "1224189821322960773" -> (known after apply)
+                ~ triggers = { # forces replacement
+                    ~ "always_run" = "2024-04-06T21:32:53Z" -> (known after apply)
+                    }
+                }
+
+            Plan: 1 to add, 0 to change, 1 to destroy.
+
+            ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+            Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+</pre>
 
 &nbsp;
 
