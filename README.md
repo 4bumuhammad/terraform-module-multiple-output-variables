@@ -93,11 +93,36 @@ Project structure.
 &nbsp;
 
 <pre>
+    ❯ vim variables.tf
+
+
+        variable "word_hello" {
+          description = "Kalimat Hello World"
+          default     = "HELLO WORLD! from root variables."
+        }
 </pre>
 
 &nbsp;
 
+Modules : <br/>
+
 <pre>
+    ❯ vim modules/world1/main.tf
+
+
+        variable "word_transition" {
+          type = string
+        }
+        
+        resource "null_resource" "echo_word_say_hello" {
+          triggers = {
+            always_run = "${timestamp()}"
+          }
+        
+          provisioner "local-exec" {
+            command = "echo '${var.word_transition}'"
+          }
+        }
 </pre>
 
 &nbsp;
